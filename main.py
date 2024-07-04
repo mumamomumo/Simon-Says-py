@@ -27,7 +27,7 @@ yellow = pygame.Rect(0, 500, 300, 300)
 
 
 class Button:
-    """Create a button, then blit the surface in the while loop"""
+    """Create clickOrderbutton, then blit the surface in the while loop"""
 
     def __init__(self, text: str,  pos: tuple, font: int, bg="gray"):
         self.x, self.y = pos
@@ -92,22 +92,22 @@ class mainMenu:
 mainmenu = mainMenu()
 
 
-a = []
+clickOrder = []
 
 
 def click(event):
-    global a
+    global clickORder
     x, y = pygame.mouse.get_pos()
     if event.type == pygame.MOUSEBUTTONDOWN:
         if pygame.mouse.get_pressed()[0:1]:
             if green.collidepoint(x, y):
-                a.append('green')
+                clickOrder.append('green')
             elif red.collidepoint(x, y):
-                a.append('red')
+                clickOrder.append('red')
             elif blue.collidepoint(x, y):
-                a.append('blue')
+                clickOrder.append('blue')
             elif yellow.collidepoint(x, y):
-                a.append('yellow')
+                clickOrder.append('yellow')
 
 
 def light_green():
@@ -176,7 +176,7 @@ def main():
     run = 1
     gamestate = 'choose'
     score = 0
-    global a
+    global clickOrder
     global order
     while run:
         clock.tick(30)
@@ -202,19 +202,19 @@ def main():
             elif gamestate == 'click':
                 WIN.fill((55, 150, 155))
                 scoretext(score)
-                if order[:len(a)] == a and len(a):
+                if order[:len(clickOrder)] == clickOrderand len(clickOrder):
                     correct()
-                elif len(a) > 0:
+                elif len(clickOrder) > 0:
                     wrong()
                     gamestate = 'choose'
                     order = []
                     score = -1
-                    a = []
-                if order == a:
+                    clickOrder = []
+                if order == clickOrder:
                     gamestate = 'choose'
                     score += 1
                     print('done')
-                    a = []
+                    clickOrder = []
             draw()
 
         for event in pygame.event.get():
