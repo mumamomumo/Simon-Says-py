@@ -96,7 +96,7 @@ clickOrder = []
 
 
 def click(event):
-    global clickORder
+    global clickOrder
     x, y = pygame.mouse.get_pos()
     if event.type == pygame.MOUSEBUTTONDOWN:
         if pygame.mouse.get_pressed()[0:1]:
